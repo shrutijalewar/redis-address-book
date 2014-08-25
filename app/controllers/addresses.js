@@ -11,6 +11,6 @@ exports.index = function(req, res){
 };
 exports.create = function(req, res){
   Address.create(req.body, res.locals.user._id, function(err, addresses){
-    res.render('addresses/index', {addresses:addresses});
+    res.redirect('/addresses', {addresses:addresses});
   });
 };

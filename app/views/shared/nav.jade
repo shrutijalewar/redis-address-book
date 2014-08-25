@@ -6,11 +6,18 @@
         span.icon-bar
         span.icon-bar
         span.icon-bar
-      a.navbar-brand(href='/') Express.js Template
+      a.navbar-brand(href='/') Redis Address Book
 
     .collapse.navbar-collapse#bs-navbar-collapse
       ul.nav.navbar-nav.navbar-right
-        li: a(href='#') About
-        li: a(href='#') Faq
-        li: a(href='#') Contact
+        if user
+          li: a(href='/addresses') Address Book
+          li: a(href='/addresses/new') Add Address
+          li
+            form(method= 'post', action='/logout')
+              input(type='hidden', name='_method', value= 'delete')
+              button.btn.btn-danger= user.email
+        else
+          li: a(href='/register') Register User
+          li: a(href='/login') Log In
 
